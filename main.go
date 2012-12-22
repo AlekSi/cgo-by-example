@@ -22,4 +22,12 @@ func main() {
 	fmt.Printf("fmt: %s\n", C.GoString(csRet))
 	C.free(unsafe.Pointer(cs))
 	C.free(unsafe.Pointer(csRet))
+
+	s1 := C.struct_s1{5}
+	s1Ret := C.f3(s1)
+	fmt.Printf("f3: s1=%#v, s1Ret=%#v\n", s1, s1Ret)
+
+	s1 = C.struct_s1{5}
+	s1Ret = *C.f4(&s1)
+	fmt.Printf("f4: s1=%#v, s1Ret=%#v\n", s1, s1Ret)
 }

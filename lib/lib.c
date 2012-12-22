@@ -13,3 +13,13 @@ char *f2(char *s) {
 	sprintf(buf, "return f2(%s)", s);
 	return buf;
 }
+
+struct s1 f3(struct s1 s) {
+	s.a *= 2;
+	return s;
+}
+
+struct s1 *f4(struct s1 *s) {
+	s->a *= 2;
+	return s;
+}
