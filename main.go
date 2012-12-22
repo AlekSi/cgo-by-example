@@ -4,6 +4,11 @@ package main
 #include "lib/lib.h"
 #include <stdlib.h>       // for free()
 #cgo LDFLAGS: -L. -llib
+
+// simple wrappers, see below
+void call_f5_with_f1() {
+	f5(f1);
+}
 */
 import "C"
 
@@ -12,7 +17,7 @@ import (
 	"unsafe"
 )
 
-func F() {
+func F(i C.int) {
 	fmt.Println("Go F()")
 }
 
@@ -21,10 +26,10 @@ func main() {
 	C.f0()
 
 	// Call with constant.
-	C.f1(1)
+	C.f1(5)
 
 	// Call with Go int - cast to C int.
-	var i int = 2
+	var i int = 8
 	C.f1(C.int(i))
 
 	// Convert Go string to C string (char*) and back.
@@ -53,19 +58,26 @@ func main() {
 	fmt.Printf("f4: s2=%v, *s2.p=%d, i=%d\n", s2, *s2.p, i)
 
 	// Pass C function pointer to C function.
-	// fp := unsafe.Pointer(C.f0) - compile error "must call C.f0"
+	// C.f5(C.f1) 				  - compile error "must call C.f1"
+	// fp := unsafe.Pointer(C.f1) - compile error "must call C.f1"
+	// See main2.go for solution.
 
-	f := func() {
+	// Pass C function pointer to C function with simple C wrapper (see top of this file).
+	C.call_f5_with_f1()
+
+	// Pass Go function pointer to C function.
+	f := func(i C.int) {
 		fmt.Println("Go f()")
 	}
 	fp := unsafe.Pointer(&f)
-	// Pass Go function pointer to C function. Compiles but explodes. Do not do this!
-	// C.f5((*[0]byte)(fp))
+	// C.f5((*[0]byte)(fp)) - Compiles but explodes. Do not do this!
+	// See main2.go for solution.
 
+	// Pass global Go function pointer to C function.
 	f = F
 	fp = unsafe.Pointer(&f)
-	// Pass global Go function pointer to C function. Compiles but explodes. Do not do this!
-	// C.f5((*[0]byte)(fp))
+	// C.f5((*[0]byte)(fp)) - Compiles but explodes. Do not do this!
+	// See main2.go for solution.
 
 	_ = fp
 }

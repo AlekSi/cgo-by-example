@@ -21,4 +21,4 @@ struct s2 {
 void f4(struct s2 s);
 
 
-void f5(void (*f)());
+void f5(void (*f)(int));

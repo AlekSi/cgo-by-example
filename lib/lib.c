@@ -37,6 +37,9 @@ void f4(struct s2 s) {
 }
 
 
-void f5(void (*f)()) {
-	f();
+void f5(void (*f)(int)) {
+	int i;
+	for (i = 0; i < 3; i++) {
+		f(i);
+	}
 }
