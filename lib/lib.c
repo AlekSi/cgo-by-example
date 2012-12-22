@@ -23,3 +23,8 @@ struct s1 *f32(struct s1 *s) {
 	s->a *= 2;
 	return s;
 }
+
+struct s2 f4(struct s2 s) {
+	s.p = 0;
+	return s;
+}

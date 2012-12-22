@@ -12,3 +12,9 @@ struct s1 {
 struct s1 f31(struct s1 s);
 
 struct s1 *f32(struct s1 *s);
+
+struct s2 {
+	void *p;
+};
+
+struct s2 f4(struct s2 s);
