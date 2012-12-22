@@ -2,6 +2,8 @@
 #include <stdlib.h>
 
 
+void f0();
+
 void f1(int a);
 
 char *f2(char *s);

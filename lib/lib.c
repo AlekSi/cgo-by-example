@@ -3,6 +3,10 @@
 #include <stdio.h>
 
 
+void f0() {
+	printf("f0()\n");
+}
+
 void f1(int a) {
 	printf("f1(%d)\n", a);
 }
