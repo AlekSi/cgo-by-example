@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 
-void f0() {
+void f0(void) {
 	printf("f0()\n");
 }
 

@@ -1,4 +1,4 @@
-void f0();
+void f0(void);
 
 void f1(int a);
 
