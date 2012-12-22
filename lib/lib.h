@@ -1,7 +1,3 @@
-// For C.free in Go and malloc in C.
-#include <stdlib.h>
-
-
 void f0();
 
 void f1(int a);

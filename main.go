@@ -2,6 +2,7 @@ package main
 
 /*
 #include "lib/lib.h"
+#include <stdlib.h>       // for free()
 #cgo LDFLAGS: -L. -llib
 */
 import "C"
