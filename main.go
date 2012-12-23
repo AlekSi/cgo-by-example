@@ -58,9 +58,9 @@ func main() {
 	fmt.Printf("f4: s2=%v, *s2.p=%d, i=%d\n", s2, *s2.p, i)
 
 	// Pass C function pointer to C function.
-	// C.f5(C.f1) 				  - compile error "must call C.f1"
+	// C.f5(C.f1)                 - compile error "must call C.f1"
 	// fp := unsafe.Pointer(C.f1) - compile error "must call C.f1"
-	// See main2.go for solution.
+	// It is not possible to pass C function pointer via Go.
 
 	// Pass C function pointer to C function with simple C wrapper (see top of this file).
 	C.call_f5_with_f1()
@@ -71,13 +71,12 @@ func main() {
 	}
 	fp := unsafe.Pointer(&f)
 	// C.f5((*[0]byte)(fp)) - Compiles but explodes. Do not do this!
-	// See main2.go for solution.
 
 	// Pass global Go function pointer to C function.
 	f = F
 	fp = unsafe.Pointer(&f)
 	// C.f5((*[0]byte)(fp)) - Compiles but explodes. Do not do this!
-	// See main2.go for solution.
+	// It is possible to call Go function from C. See main2.go for solution.
 
 	_ = fp
 }

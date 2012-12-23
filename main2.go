@@ -4,8 +4,9 @@ package main
 // Sometimes you still need a hand-written wrapper.
 
 import (
-	_ "./wrapper"
+	"./wrapper"
 )
 
 func main() {
+	wrapper.CallF5WithF()
 }
