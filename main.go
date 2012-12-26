@@ -5,8 +5,8 @@ package main
 #include <stdlib.h>       // for free()
 #cgo LDFLAGS: -L. -llib
 
-// simple wrappers, see below
-void call_f5_with_f1() {
+// simple wrapper, see below
+void call_f5_with_f1(void) {
 	f5(f1);
 }
 */
