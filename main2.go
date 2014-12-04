@@ -4,7 +4,7 @@ package main
 // Sometimes you still need a hand-written wrapper.
 
 import (
-	"./wrapper"
+	"github.com/AlekSi/cgo-by-example/wrapper"
 )
 
 func main() {
